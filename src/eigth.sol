@@ -7,7 +7,7 @@ contract Raffle {
     address public entryfee;
 
     constructor() {
-        host = msg.sender;
+        msg.sender = host;
         entryfee = 0.005 ether;
     }
 

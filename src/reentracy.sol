@@ -239,11 +239,11 @@ contract Sherlock is ISherlock, ERC721, Ownable, Pausable {
 
     function _transferTokensOut(address _receiver, uint256 _amount) internal {
         sherlockProtocolManager.claimPremiumsForStakers();
-        uint256 mainBalance = token.balanceOf(address(this));
-        if (_amount > mainBalance) {
-            yieldStrategy.withdraw(_amount - mainBalance);
+        uint256 mainBalance = token.balanceOf(address(this));   
+        if (_amount > mainBalance) {   //check
+            yieldStrategy.withdraw(_amount - mainBalance);  //interact  
         }
-        token.safeTransfer(_receiver, _amount);
+        token.safeTransfer(_receiver, _amount); 
     }
 
     function _redeemSharesCalc(uint256 _stakeShares) internal view returns (uint256) {
